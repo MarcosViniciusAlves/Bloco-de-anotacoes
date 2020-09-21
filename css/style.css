@@ -1,0 +1,19 @@
+body{
+    background-image:linear-gradient(to left , grey 1%, black);
+    color: whitesmoke;
+    font-size: 20px;
+}
+
+.apagar{
+    margin-left: 5%;
+}
+
+.elementoForm{
+    margin-top: 2%;
+}
+
+#container{
+    margin-left: 35%;
+    margin-top: 10%;
+    display: absolute;
+}
