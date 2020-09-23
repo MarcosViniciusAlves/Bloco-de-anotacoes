@@ -76,13 +76,10 @@ function adicionaNoForm (li) {
 
 //salva as tarefas em um array , transforma em string e salva no local storage.
 function salvarElementos () {
-    const tarefas = document.querySelectorAll("li");
+    const tarefas = [...document.querySelectorAll("li")];
     const tarefasSalvas = [];
 
-    for (const li of tarefas) {
-        const tarefa = li.innerText.replace("Apagar","");
-        tarefasSalvas.push(tarefa);
-    }
+    tarefas.map((valor)=>{tarefasSalvas.push(valor.innerText.replace("Apagar",""))});
 
     const tarefaJson = JSON.stringify(tarefasSalvas);
     salvaNoNavegador(tarefaJson);
@@ -95,14 +92,11 @@ function carregarElementos(){
     let tarefas = localStorage.getItem("tarefa");
 
     //transforma em array novamente.
-    tarefas = JSON.parse(tarefas);
+    tarefas = [...JSON.parse(tarefas)];
     
     //tenta executar o for e carregar os elementos.
     try{
-        for(let tarefa of tarefas){
-            let li = criaLi(tarefa,criaButton());
-            adicionaNoForm(li);
-        }
+        tarefas.map((valor)=>{adicionaNoForm(criaLi(valor,criaButton()))});
     }
 
     //se tiver um erro não vai acontecer nada.
