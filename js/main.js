@@ -77,18 +77,16 @@ function adicionaNoForm (li) {
 //salva as tarefas em um array , transforma em string e salva no local storage.
 function salvarElementos () {
     const tarefas = document.querySelectorAll("li");
-    let tarefasSalvas = [];
+    const tarefasSalvas = [];
 
-    for (let li of tarefas) {
-        let tarefa = (li.innerText);
-        tarefa = tarefa.replace("Apagar","");
+    for (const li of tarefas) {
+        const tarefa = li.innerText.replace("Apagar","");
         tarefasSalvas.push(tarefa);
     }
 
     const tarefaJson = JSON.stringify(tarefasSalvas);
     salvaNoNavegador(tarefaJson);
 }
-
 
 //carrega os elementos q estão salvos no local storage.
 function carregarElementos(){
